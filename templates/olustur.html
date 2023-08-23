@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="">İsim Giriniz</label>
+    <input type="text" name="isim">
+    <label for="">Resim Giriniz</label>
+    <input type="file" name="resim" id="">
+    <input type="text" name="kategori">
+    <input type="submit" value="Oluştur">
+</form>
+  
+{% endblock content %}

@@ -1,0 +1,64 @@
+{% extends 'index.html' %} 
+{% load static %} 
+{% block content %}
+
+<!-- Navbar -->
+
+{% include "includes/_navbar2.html" %}
+<!-- Hero image -->
+{% include "includes/_hero.html" %}
+<!-- card yapısı -->
+<div class="container">
+  <div class="row mt-5" id="populer">
+    <h3 class="text-light">Netflix'te Popüler</h3>
+    {% for i in filmler %} {% if i.kategori.isim == 'Popüler' %} <div class="col-md-2 col-4 mt-1">
+        <a href="video.html">
+            <img src="{{i.resim.url}}" class="w-100" alt="">
+        </a>
+    </div>{% endif %} {% endfor %}
+  </div>
+
+  <div class="row mt-5">
+    <h3 class="text-light">Gündemdekiler</h3>
+    {% for i in filmler %} {% if i.kategori.isim == 'Gündemdekiler' %} <div class="col-md-2 col-4 mt-1">
+        <a href="video.html">
+            <img src="{{i.resim.url}}" class="w-100" alt="">
+        </a>
+    </div> {% endif %} {% endfor %}
+  </div>
+  <div class="row mt-5" id="dizi">
+    <h3 class="text-light">Diziler</h3>
+    {% for i in user  %}  
+    {% if i.isim == "Ahmet"  %}
+    {% for i in filmler %} {% if i.kategori.isim == 'Diziler' %}  
+    <div class="col-md-2 col-4 mt-1">
+      <a href="video.html">
+          <img src="{{i.resim.url}}" class="w-100" alt="">
+      </a>
+  </div>
+  {% else %}
+  <div class="col-md-2 col-4 mt-1">
+    <a href="video.html">
+        <img src="{{i.resim.url}}" class="w-100" alt="">
+    </a>
+</div>
+  {% endif %}
+
+    {% endfor %}
+      
+
+      
+   {% endif %} {% endfor %} 
+  </div>
+  <div class="row mt-5">
+    <h3 class="text-light" id="film">Filmler</h3>
+    {% for i in filmler %} {% if i.kategori.isim == 'Filmler' %}
+   <div class="col-md-2 col-4 mt-1">
+        <a href="video.html">
+            <img src="{{i.resim.url}}" class="w-100" alt="">
+        </a>
+    </div>{% endif %} {% endfor %} 
+  </div>
+</div>
+
+{% endblock content %}
